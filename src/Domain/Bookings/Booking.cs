@@ -1,4 +1,5 @@
 ﻿using Domain.Abstractions;
+using Domain.Apartments;
 using Domain.Bookings.Events;
 using Domain.Shared;
 
@@ -54,14 +55,16 @@ public sealed class Booking : Entity
 
 	public DateTime? CancelledOnUtc { get; private set; }
 
-	public static Booking Reserve(Guid apartmentId,
+	public static Booking Reserve(Apartment apartment,
 		Guid userId,
 		DateRange duration,
 		DateTime utcNow,
-		PricingDetails pricingDetails)
+		PricingService pricingService)
 	{
+		var pricingDetails = pricingService.CalculatePricing(apartment, duration);
+
 		var booking = new Booking(Guid.NewGuid(),
-			apartmentId,
+			apartment.Id,
 			userId,
 			duration,
 			pricingDetails.PricForPeriod,
@@ -72,6 +75,8 @@ public sealed class Booking : Entity
 			utcNow);
 
 		booking.RaiseDomainEvents(new BookingReservedDomainEvent(booking.Id));
+
+		apartment.LastbookedOnUtc = utcNow;
 
 		return booking;
 	}
