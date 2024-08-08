@@ -1,4 +1,5 @@
 ﻿using Domain.Abstractions;
+using Domain.Shared;
 
 // ReSharper disable ConvertToPrimaryConstructor
 namespace Domain.Apartments

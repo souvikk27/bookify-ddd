@@ -1,7 +1,7 @@
 ﻿// ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable InconsistentNaming
 
-namespace Domain.Apartments;
+namespace Domain.Shared;
 
 public record Currency
 {
