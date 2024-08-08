@@ -7,3 +7,4 @@
 /src/Domain/obj
 /src/Domain/bin
 *.user
+/src/Application/obj
