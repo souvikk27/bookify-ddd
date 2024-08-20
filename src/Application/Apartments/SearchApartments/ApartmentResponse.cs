@@ -1,4 +1,5 @@
-﻿namespace Application.Apartments.SearchApartments;
+﻿#pragma warning disable CS8618 
+namespace Application.Apartments.SearchApartments;
 
 public sealed class ApartmentResponse
 {
