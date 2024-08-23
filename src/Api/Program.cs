@@ -18,6 +18,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseGlobalExceptionHandler();
+
 app.MapControllers();
 
 app.Run();

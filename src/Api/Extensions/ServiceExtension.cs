@@ -1,4 +1,5 @@
-﻿using Application;
+﻿using Api.Middleware;
+using Application;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,5 +18,10 @@ public static class ServiceExtension
 		using var scope = app.ApplicationServices.CreateScope();
 		using var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 		dbContext.Database.Migrate();
+	}
+
+	public static void UseGlobalExceptionHandler(this IApplicationBuilder app)
+	{
+		app.UseMiddleware<ExceptionHandlingMiddleware>();
 	}
 }
