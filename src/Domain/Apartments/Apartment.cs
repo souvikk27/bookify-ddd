@@ -4,7 +4,7 @@ using Domain.Shared;
 // ReSharper disable ConvertToPrimaryConstructor
 namespace Domain.Apartments
 {
-    public class Apartment : Entity
+    public sealed class Apartment : Entity
     {
         public Apartment(Guid id, Name name, Description description, Address address, Money price,
             Money cleaningFee, DateTime lastbookedOnUtc, List<Amenity> amenities) : base(id)
@@ -16,6 +16,11 @@ namespace Domain.Apartments
             CleaningFee = cleaningFee;
             LastbookedOnUtc = lastbookedOnUtc;
             Amenities = amenities;
+        }
+
+        private Apartment()
+        {
+
         }
 
         public Name Name { get; private set; }

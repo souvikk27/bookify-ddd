@@ -14,3 +14,6 @@
 /src/Api/obj
 /src/Api/bin
 /obj/Docker
+/.containers/database
+/bin/Debug
+/obj/Debug
