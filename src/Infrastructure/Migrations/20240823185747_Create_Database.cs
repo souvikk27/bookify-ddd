@@ -27,12 +27,12 @@ namespace Infrastructure.Migrations
                     price_currency = table.Column<string>(type: "text", nullable: false),
                     cleaning_fee_amount = table.Column<decimal>(type: "numeric", nullable: false),
                     cleaning_fee_currency = table.Column<string>(type: "text", nullable: false),
-                    lastbooked_on_utc = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    last_booked_on_utc = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     amenities = table.Column<int[]>(type: "integer[]", nullable: false),
                     xmin = table.Column<uint>(type: "xid", rowVersion: true, nullable: false),
-                    reference_id = table.Column<string>(type: "text", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    reference_id = table.Column<string>(type: "text", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,9 +47,9 @@ namespace Infrastructure.Migrations
                     first_name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     last_name = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     email = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
-                    reference_id = table.Column<string>(type: "text", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    reference_id = table.Column<string>(type: "text", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -79,9 +79,9 @@ namespace Infrastructure.Migrations
                     rejected_on_utc = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     completed_on_utc = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     cancelled_on_utc = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    reference_id = table.Column<string>(type: "text", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    reference_id = table.Column<string>(type: "text", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -111,9 +111,9 @@ namespace Infrastructure.Migrations
                     rating = table.Column<int>(type: "integer", nullable: false),
                     comment = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
                     created_on_utc = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    reference_id = table.Column<string>(type: "text", nullable: false),
-                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    reference_id = table.Column<string>(type: "text", nullable: true),
+                    created_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    updated_at = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {

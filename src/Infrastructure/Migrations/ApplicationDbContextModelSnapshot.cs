@@ -34,7 +34,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("integer[]")
                         .HasColumnName("amenities");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
@@ -44,9 +44,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("description");
 
-                    b.Property<DateTime>("LastbookedOnUtc")
+                    b.Property<DateTime?>("LastBookedOnUtc")
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("lastbooked_on_utc");
+                        .HasColumnName("last_booked_on_utc");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -55,11 +55,10 @@ namespace Infrastructure.Migrations
                         .HasColumnName("name");
 
                     b.Property<string>("ReferenceId")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("reference_id");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
@@ -98,7 +97,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("confirmed_on_utc");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
@@ -107,7 +106,6 @@ namespace Infrastructure.Migrations
                         .HasColumnName("created_on_utc");
 
                     b.Property<string>("ReferenceId")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("reference_id");
 
@@ -119,7 +117,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("status");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
@@ -160,7 +158,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("character varying(200)")
                         .HasColumnName("comment");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
@@ -173,11 +171,10 @@ namespace Infrastructure.Migrations
                         .HasColumnName("rating");
 
                     b.Property<string>("ReferenceId")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("reference_id");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 
@@ -207,7 +204,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("created_at");
 
@@ -230,11 +227,10 @@ namespace Infrastructure.Migrations
                         .HasColumnName("last_name");
 
                     b.Property<string>("ReferenceId")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("reference_id");
 
-                    b.Property<DateTime>("UpdatedAt")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("updated_at");
 

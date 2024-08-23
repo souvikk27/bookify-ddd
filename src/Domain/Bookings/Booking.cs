@@ -80,7 +80,7 @@ public sealed class Booking : Entity
 
 		booking.RaiseDomainEvents(new BookingReservedDomainEvent(booking.Id));
 
-		apartment.LastbookedOnUtc = utcNow;
+		apartment.LastBookedOnUtc = utcNow;
 
 		return booking;
 	}
