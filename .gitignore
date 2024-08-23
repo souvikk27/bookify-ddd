@@ -8,4 +8,8 @@
 /src/Domain/bin
 *.user
 /src/Application/obj
+/src/Application/bin
 /src/Infrastructure/obj
+/src/Infrastructure/bin
+/src/Api/obj
+/src/Api/bin
