@@ -15,8 +15,8 @@ namespace Domain.Abstractions
         protected Entity() { }
 
         private readonly List<IDomainEvent> _domainEvents = new();
-        public Guid Id { get; init; }
-        public string? ReferenceId { get; init; }
+        public Guid Id { get; set; }
+        public string? ReferenceId { get; set; }
         public DateTime? CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
@@ -25,6 +25,11 @@ namespace Domain.Abstractions
         public void ClearDomainEvents()
         {
             _domainEvents.Clear();
+        }
+        
+        public void UpdateTimestamp()
+        {
+            UpdatedAt = DateTime.UtcNow;
         }
 
         protected void RaiseDomainEvents(IDomainEvent domainEvent)
