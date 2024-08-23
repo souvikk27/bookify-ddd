@@ -1,7 +1,15 @@
 ﻿using Application.Abstractions;
+using Application.Abstractions.Data;
 using Application.Abstractions.Email;
+using Dapper;
+using Domain.Abstractions;
+using Domain.Apartments;
+using Domain.Bookings;
+using Domain.Users;
 using Infrastructure.Clock;
+using Infrastructure.Data;
 using Infrastructure.Email;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +33,17 @@ public static class DependencyInjection
             options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention();
         });
 
+        services.AddScoped<IUserRepository, UserRepository>();
+
+        services.AddScoped<IApartmentRepository, ApartmentRepository>();
+
+        services.AddScoped<IBookingRepository, BookingRepository>();
+
+        services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
+
+        services.AddSingleton<ISqlConnectionFactory>(_ => new SqlConnectionFactory(connectionString));
+
+        SqlMapper.AddTypeHandler(new DateOnlyTypeHandler());
         return services;
     }
 }
