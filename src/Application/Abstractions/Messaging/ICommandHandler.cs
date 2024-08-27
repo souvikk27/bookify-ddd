@@ -1,5 +1,6 @@
 ﻿using Domain.Abstractions;
 using MediatR;
+// ReSharper disable TypeParameterCanBeVariant
 
 namespace Application.Abstractions.Messaging;
 

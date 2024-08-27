@@ -26,6 +26,7 @@ public sealed class ApplicationDbContext : DbContext, IUnitOfWork
     {
         try
         {
+            UpdateAuditFields();
             var result = await base.SaveChangesAsync(cancellationToken);
 
             await PublishDomainEventAsync();
@@ -53,6 +54,30 @@ public sealed class ApplicationDbContext : DbContext, IUnitOfWork
         foreach (var domainEvent in domainEvents)
         {
             await _publisher.Publish(domainEvent);
+        }
+    }
+
+    private void UpdateAuditFields()
+    {
+        foreach (var entry in ChangeTracker.Entries<Entity>())
+        {
+            switch (entry.State)
+            {
+                case EntityState.Added:
+                    entry.Entity.Id = entry.Entity.Id == Guid.Empty
+                        ? throw new ArgumentNullException($"Entity Id cannot be null")
+                        : entry.Entity.Id;
+                    entry.Entity.ReferenceId = entry.Entity.Id.ToString();
+                    entry.Entity.CreatedAt = DateTime.UtcNow;
+                    entry.Entity.UpdatedAt = DateTime.UtcNow;
+                    break;
+
+                case EntityState.Modified:
+                    entry.Property(e => e.CreatedAt).IsModified = false;
+                    entry.Property(e => e.ReferenceId).IsModified = false;
+                    entry.Entity.UpdatedAt = DateTime.UtcNow;
+                    break;
+            }
         }
     }
 }
