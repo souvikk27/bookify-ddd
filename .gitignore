@@ -17,3 +17,4 @@
 /.containers/database
 /bin/Debug
 /obj/Debug
+/.containers/identity/h2
